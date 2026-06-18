@@ -56,7 +56,7 @@ Provides an online version of my resume along with a downloadable PDF version.
 Before development, portions of the website were planned and designed in Figma to explore layouts, navigation, and overall user experience.
 
 **Figma Design:**
-[Add Figma Link Here]
+
 
 ---
 
