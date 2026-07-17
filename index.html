@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Page details, fonts, icons, and the shared site styles live here. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Zaanie Bowen, a software engineer focused on thoughtful, user-centered front-end and full-stack development.">
+  <title>Zaanie Bowen | Software Engineer</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <!-- This link lets keyboard users jump past the navigation. -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <!-- The same three-page navigation is used across the whole portfolio. -->
+  <nav class="navbar navbar-expand-lg navbar-light nav-soft" aria-label="Primary navigation">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="index.html"><span class="brand-name">ZAANIE BOWEN</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
+          <li class="nav-item"><a class="nav-link nav-pill" href="index.html" data-nav="home">Home</a></li>
+          <li class="nav-item"><a class="nav-link nav-pill" href="projects.html" data-nav="projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link nav-pill" href="resume.html" data-nav="resume">Resume</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- The homepage keeps the main introduction and contact details in one easy-to-scan page. -->
+  <main id="main-content" class="flex-grow-1">
+    <!-- The hero gives recruiters the short version and two clear next steps. -->
+    <header class="hero" id="top">
+      <div class="container px-4 px-lg-5 text-center">
+        <p class="hero-kicker">SOFTWARE ENGINEER</p>
+        <h1 class="hero-title">Hi! I'm Zaanie</h1>
+        <p class="hero-subtitle">I build thoughtful, user-focused software with a strong foundation in front-end development, responsive design, and clean, maintainable code.</p>
+        <div class="hero-actions">
+          <a class="btn-pill btn-pill--primary" href="projects.html">View My Work</a>
+          <a class="btn-pill btn-pill--secondary" href="resume.html">View My Resume</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- This short bio replaces the old standalone About page. -->
+    <section class="content-section content-section--tinted" aria-labelledby="about-heading">
+      <div class="container px-4 px-lg-5">
+        <div class="narrow-copy">
+          <h2 class="section-title" id="about-heading">About Me</h2>
+          <p>I'm a recently graduated Software Engineer with a particular interest in front-end, full-stack, and product-focused development. I enjoy combining technical problem-solving with thoughtful design to create software that feels clear, intuitive, and genuinely useful.</p>
+          <p>My background also includes UI/UX design, giving me a strong appreciation for both how a product works and how people experience it.</p>
+          <a class="btn-pill btn-pill--primary mt-3" href="projects.html">View Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills are grouped by purpose so they are quick to scan. -->
+    <section class="content-section" aria-labelledby="skills-heading">
+      <div class="container px-4 px-lg-5">
+        <div class="section-heading text-center">
+          <h2 class="section-title" id="skills-heading">Skills</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-xl-3"><div class="skill-card h-100"><h3>Programming</h3><ul><li>Python</li><li>Java</li><li>JavaScript</li><li>Swift</li></ul></div></div>
+          <div class="col-12 col-md-6 col-xl-3"><div class="skill-card h-100"><h3>Frontend</h3><ul><li>HTML</li><li>CSS</li><li>Responsive Design</li><li>UI Architecture</li></ul></div></div>
+          <div class="col-12 col-md-6 col-xl-3"><div class="skill-card h-100"><h3>Data and Development</h3><ul><li>SQL</li><li>Database Fundamentals</li><li>Object-Oriented Programming</li><li>Debugging</li><li>Git and GitHub</li></ul></div></div>
+          <div class="col-12 col-md-6 col-xl-3"><div class="skill-card h-100"><h3>Design and Tools</h3><ul><li>Figma</li><li>Adobe Suite</li><li>Marvel</li><li>VS Code</li></ul></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The contact area uses direct links instead of an inactive form. -->
+    <section class="content-section contact-cta" aria-labelledby="contact-heading">
+      <div class="container px-4 px-lg-5 text-center">
+        <h2 class="section-title" id="contact-heading">Let's Connect</h2>
+        <p>Have an opportunity, project, or role you think I may be a good fit for? I'd love to hear from you.</p>
+        <a class="btn-pill btn-pill--primary" href="mailto:melezaan.b@gmail.com?subject=Portfolio%20Inquiry"><i class="bi bi-envelope" aria-hidden="true"></i>Email Me</a>
+        <div class="social-links" aria-label="Professional profiles">
+          <a class="icon-btn" href="https://www.linkedin.com/in/melezaan-bowen-1bb690200/" target="_blank" rel="noopener noreferrer" aria-label="View Zaanie Bowen on LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+          <a class="icon-btn" href="https://github.com/Zaanie10" target="_blank" rel="noopener noreferrer" aria-label="View Zaanie Bowen on GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- The footer repeats the quickest ways to contact Zaanie. -->
+  <footer class="site-footer py-4">
+    <div class="container px-4 px-lg-5 d-flex align-items-center justify-content-between flex-column flex-sm-row gap-3">
+      <p class="small m-0">&copy; Zaanie Bowen 2026</p>
+      <div>
+        <a href="mailto:melezaan.b@gmail.com?subject=Portfolio%20Inquiry" class="footer-icon" aria-label="Email Zaanie Bowen"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/melezaan-bowen-1bb690200/" target="_blank" rel="noopener noreferrer" class="footer-icon" aria-label="View Zaanie Bowen on LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/Zaanie10" target="_blank" rel="noopener noreferrer" class="footer-icon" aria-label="View Zaanie Bowen on GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- Bootstrap handles the mobile menu; the site script marks the current page. -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
