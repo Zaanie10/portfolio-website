@@ -12,6 +12,8 @@ This portfolio website serves as a central hub for my software engineering work,
 
 Built using HTML, CSS, JavaScript, and Bootstrap, the website began with the Start Bootstrap Personal template and was extensively customized to reflect my own design preferences, content, and professional goals.
 
+<img src="images/zaaniebowen.dev.jpeg" alt="Screenshot of homepage" width="500">
+
 ---
 
 ## Built With
@@ -57,6 +59,7 @@ Before development, portions of the website were planned and designed in Figma t
 
 **Figma Design:**
 
+https://www.figma.com/files/team/1529218765812452584/project/626820808?fuid=1404835513022993548
 
 ---
 
