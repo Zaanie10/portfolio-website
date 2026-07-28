@@ -1,31 +1,59 @@
-<!doctype html>
-<html lang="en">
-<head>
+<!-- projects.html
 
+Purpose:
+   I use this page to present selected software and design work.
+
+ Responsibilities:
+   - I present project previews, technology tags, and external project links.
+   - I provide useful alternative text and safe external-link behavior.
+   - I supply stable card hooks for ScrollTrigger and pointer interactions.
+
+ Dependencies:
+   - Bootstrap layout utilities and Bootstrap Icons
+   - Shared css/custom.css visual system
+   - GSAP, ScrollTrigger, ScrollToPlugin, and js/scripts.js
+
+ Notes:
+   I use explicit placeholder actions when a demo does not exist rather than
+   sending visitors to an incomplete or misleading destination.
+
+-->
+
+<!doctype html>
+
+<html lang="en">
+
+<head>
   <!-- Page details, fonts, icons, and the shared site styles live here. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore software development and UI/UX projects by software engineer Zaanie Bowen.">
   <title>Projects | Zaanie Bowen</title>
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <!-- Fonts --> 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Stylesheets --> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link href="css/custom.css" rel="stylesheet">
+  <link href="css/custom.css?v=20260725-4" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
-
-  <!-- This link lets keyboard users jump past the navigation. -->
+<body class="d-flex flex-column min-vh-100" data-motion-page>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+<!-- Skip link allows keyboard users to bypass repeated navigation and jump directly to the page's main content. -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  <!-- Shared navigation keeps the portfolio consistent across pages. scripts.js handles the active state and page transitions. -->
 
-  <!-- The same three-page navigation is used across the whole portfolio. -->
-  <nav class="navbar navbar-expand-lg navbar-light nav-soft" aria-label="Primary navigation">
+  <!-- Navigation --> 
+  <nav class="navbar navbar-expand-lg navbar-light nav-soft" aria-label="Primary navigation" data-site-nav>
     <div class="container px-4 px-lg-5">
       <a class="navbar-brand" href="index.html"><span class="brand-name">ZAANIE BOWEN</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Collapsable for responsive size --> 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
           <li class="nav-item"><a class="nav-link nav-pill" href="index.html" data-nav="home">Home</a></li>
@@ -36,12 +64,14 @@
     </div>
   </nav>
 
-  <!-- The page header introduces the work and links to Zaanie's main profiles. -->
-  <main id="main-content" class="flex-grow-1">
-    <header class="page-header">
+  <!-- Main Content --> 
+  <main id="main-content" class="flex-grow-1" data-page-content>
+    <!-- Header Section --> 
+    <header class="page-header" data-motion-hero>
       <div class="container px-4 px-lg-5 text-center">
         <h1 class="hero-title">Projects</h1>
         <p class="page-intro">A collection of software development and UI/UX projects that reflect how I approach problem-solving, implementation, and user experience.</p>
+        <!-- Profile Links --> 
         <div class="profile-links" aria-label="Professional profiles">
           <a class="btn-pill btn-pill--secondary" href="https://github.com/Zaanie10" target="_blank" rel="noopener noreferrer"><i class="bi bi-github" aria-hidden="true"></i>GitHub</a>
           <a class="btn-pill btn-pill--secondary" href="https://www.linkedin.com/in/melezaan-bowen-1bb690200/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin" aria-hidden="true"></i>LinkedIn</a>
@@ -49,83 +79,107 @@
       </div>
     </header>
 
-    <!-- Each project card keeps its summary, tools, source code, and design link together. -->
-    <section class="content-section pt-0" aria-labelledby="project-list-heading">
+    <!-- All project cards share the same structure so a single responsive layout and GSAP animation system can be reused without project-specific logic. -->
+    <section class="content-section pt-0" aria-labelledby="project-list-heading" data-reveal-section>
       <div class="container px-4 px-lg-5">
         <h2 class="visually-hidden" id="project-list-heading">Project portfolio</h2>
-        <div class="row g-4">
+        <div class="project-list">
 
-          <!-- Ledgr was a team project, so both the shared repository and its design workspace are linked here. -->
-          <div class="col-12 col-lg-6">
-            <article class="project-card h-100">
+          <!-- Group Project: Ledgr Accounting Software -->
+          <article class="project-card">
+              <div class="project-card__media">
+                <img class="project-card__image" src="assets/ledgr-preview.jpg" alt="Ledgr accounting software dashboard showing account management, charts, and event logs">
+              </div>
               <div class="project-card__body">
                 <p class="placeholder-label">Accounting Platform</p>
-                <h3>Ledgr</h3>
+                <h3>Ledgr Accounting Software</h3>
                 <p>A web-based accounting application designed to help businesses manage accounts, journalize transactions, prepare trial balances, and create financial statements.</p>
-                
-                <!-- These tags reflect the technologies documented in the project repository. -->
                 <div class="tag-row" aria-label="Technologies used for Ledgr"><span class="tag">C#</span><span class="tag">Blazor</span><span class="tag">SQLite</span><span class="tag">JavaScript</span></div>
+                <!-- Links to project repositories and design files -->
                 <div class="project-card__actions">
                   <a class="btn-pill btn-pill--primary" href="https://github.com/pcox22/Ledgr-SWE4713" target="_blank" rel="noopener noreferrer"><i class="bi bi-github" aria-hidden="true"></i>View on GitHub</a>
                   <a class="btn-pill btn-pill--secondary" href="https://www.figma.com/files/team/1529218765812452584/project/591324769?fuid=1404835513022993548" target="_blank" rel="noopener noreferrer"><i class="bi bi-vector-pen" aria-hidden="true"></i>View in Figma</a>
                 </div>
               </div>
-            </article>
-          </div>
+          </article>
 
-          <!-- Daisy Delights shows the front-end and responsive design work in a restaurant-style website. -->
-          <div class="col-12 col-lg-6">
-            <article class="project-card h-100">
-              <div class="project-card__body">
-                <p class="placeholder-label">Responsive Business Website</p>
-                <h3>Daisy Delights</h3>
-                <p>A responsive bakery and café website with intuitive navigation, menu and gallery sections, reservations, and a mobile-friendly interface.</p>
-                
-                <!-- These tags come directly from the project's README. -->
-                <div class="tag-row" aria-label="Technologies used for Daisy Delights"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span></div>
-                <div class="project-card__actions">
-                  <a class="btn-pill btn-pill--primary" href="https://github.com/Zaanie10/daisy-delights" target="_blank" rel="noopener noreferrer"><i class="bi bi-github" aria-hidden="true"></i>View on GitHub</a>
-                  
-                  <!-- Replace this placeholder with the final Daisy Delights Figma project URL. -->
-                  <a class="btn-pill btn-pill--secondary" href="https://www.figma.com/design/sHClwbr4YRoMMyNI95bWQ0/Daisy-Delights?node-id=0-1&t=ep3J8HjjdJTL75uv-1" target="_blank" rel="noopener noreferrer"><i class="bi bi-vector-pen" aria-hidden="true"></i>View in Figma</a>
-
-                </div>
+          <!-- Solo Project: SnackSnitch Mobile App -->
+          <article class="project-card">
+              <div class="project-card__media project-card__media--contain">
+                <img class="project-card__image" src="assets/snacksnitch-preview.jpg" alt="Four mobile screens from the SnackSnitch dog-safe food lookup app">
               </div>
-            </article>
-          </div>
-
-          <!-- SnackSnitch links to the supplied repository and its matching Figma project. -->
-          <div class="col-12 col-lg-6">
-            <article class="project-card h-100">
               <div class="project-card__body">
-                <p class="placeholder-label">Software &amp; UI/UX Project</p>
-                <h3>SnackSnitch</h3>
-                <p>Explore the project source code and its supporting interface designs using the links below.</p>
-                
-                <!-- Add verified technology tags here once the repository documentation is finalized. -->
-                <div class="tag-row" aria-label="SnackSnitch project details"><span class="tag">Project details coming soon</span></div>
+                <p class="placeholder-label">Mobile Product Design</p>
+                <h3>SnackSnitch Mobile App</h3>
+                <p>A dog-safe food lookup application that helps pet owners quickly determine whether foods are safe, unsafe, or should be fed with caution through an intuitive, mobile-first interface.</p>
+                <!-- Links to project repositories and design files -->
+                <div class="tag-row" aria-label="SnackSnitch project disciplines"><span class="tag">Figma</span><span class="tag">UI/UX</span><span class="tag">Mobile Design</span><span class="tag">Product Design</span></div>
                 <div class="project-card__actions">
                   <a class="btn-pill btn-pill--primary" href="https://github.com/Zaanie10/SnackSnitch" target="_blank" rel="noopener noreferrer"><i class="bi bi-github" aria-hidden="true"></i>View on GitHub</a>
                   <a class="btn-pill btn-pill--secondary" href="https://www.figma.com/files/team/1529218765812452584/project/591321287?fuid=1404835513022993548" target="_blank" rel="noopener noreferrer"><i class="bi bi-vector-pen" aria-hidden="true"></i>View in Figma</a>
                 </div>
               </div>
-            </article>
-          </div>
+          </article>
+
+          <!-- Solo Project: Daisy Delights Restaurant Website -->
+          <article class="project-card">
+              <div class="project-card__media">
+                <img class="project-card__image" src="assets/daisy-delights-preview.jpg" alt="Daisy Delights restaurant website with fruit-topped pastries and reservation navigation">
+              </div>
+              <div class="project-card__body">
+                <p class="placeholder-label">Responsive Business Website</p>
+                <h3>Daisy Delights Restaurant Website</h3>
+                <p>A responsive bakery and café website with intuitive navigation, menu and gallery sections, reservations, and a mobile-friendly interface.</p>
+                <!-- Links to project repositories and design files -->
+                <div class="tag-row" aria-label="Technologies used for Daisy Delights"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span></div>
+                <div class="project-card__actions">
+                  <a class="btn-pill btn-pill--primary" href="https://github.com/Zaanie10/daisy-delights" target="_blank" rel="noopener noreferrer"><i class="bi bi-github" aria-hidden="true"></i>View on GitHub</a>
+                  <a class="btn-pill btn-pill--secondary" href="https://www.figma.com/design/sHClwbr4YRoMMyNI95bWQ0/Daisy-Delights?node-id=0-1&amp;t=ep3J8HjjdJTL75uv-1" target="_blank" rel="noopener noreferrer"><i class="bi bi-vector-pen" aria-hidden="true"></i>View in Figma</a>
+                </div>
+              </div>
+          </article>
+
+          <!-- Solo Project: Food Ordering Webpage -->
+          <article class="project-card">
+              <div class="project-card__media">
+                <img class="project-card__image" src="assets/food-ordering-preview.jpg" alt="Food ordering webpage with meal, add-on, and drink selection controls">
+              </div>
+              <div class="project-card__body">
+                <p class="placeholder-label">Interactive Web Application</p>
+                <h3>Food Ordering Webpage</h3>
+                <p>An interactive food ordering webpage that lets customers personalize a meal, choose add-ons and a drink, and submit or reset their selections through a clear, approachable interface.</p>
+                <!-- Links to project repositories and design files -->
+                <div class="tag-row" aria-label="Technologies used for the Food Ordering Webpage"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Responsive Design</span></div>
+                <div class="project-card__actions">
+                  <a class="btn-pill btn-pill--primary" href="https://github.com/Zaanie10/food-ordering-app" target="_blank" rel="noopener noreferrer"><i class="bi bi-github" aria-hidden="true"></i>View on GitHub</a>
+                </div>
+              </div>
+          </article>
+        </div>
+
+        <!-- Link to GitHub -->
+        <div class="projects-cta">
+          <p>Want to see more of my development work?</p>
+          <a class="btn-pill btn-pill--primary" href="https://github.com/Zaanie10" target="_blank" rel="noopener noreferrer"><i class="bi bi-github" aria-hidden="true"></i>View All Projects on GitHub</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- The footer repeats the quickest ways to contact Zaanie. -->
+  <!-- Footer with contact information -->
   <footer class="site-footer py-4">
     <div class="container px-4 px-lg-5 d-flex align-items-center justify-content-between flex-column flex-sm-row gap-3">
       <p class="small m-0">&copy; Zaanie Bowen 2026</p>
       <div><a href="mailto:melezaan.b@gmail.com?subject=Portfolio%20Inquiry" class="footer-icon" aria-label="Email Zaanie Bowen"><i class="bi bi-envelope" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/melezaan-bowen-1bb690200/" target="_blank" rel="noopener noreferrer" class="footer-icon" aria-label="View Zaanie Bowen on LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a><a href="https://github.com/Zaanie10" target="_blank" rel="noopener noreferrer" class="footer-icon" aria-label="View Zaanie Bowen on GitHub"><i class="bi bi-github" aria-hidden="true"></i></a></div>
     </div>
   </footer>
+  <button class="back-to-top" type="button" aria-label="Back to top"><i class="bi bi-arrow-up" aria-hidden="true"></i></button>
 
-  <!-- Bootstrap handles the mobile menu; the site script marks the current page. -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+  <script src="js/scripts.js?v=20260725-3"></script>
 </body>
 </html>
