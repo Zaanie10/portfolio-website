@@ -1,4 +1,20 @@
-/* Shared colors, fonts, and sizing keep all three pages consistent. */
+/*
+ * custom.css
+ *
+ * Purpose:
+ *   Defines the portfolio's custom visual system and reusable components.
+ *
+ * Responsibilities:
+ *   - Extends and customizes Bootstrap styles.
+ *   - Defines reusable layouts, components, and utility classes.
+ *   - Provides motion-ready states consumed by GSAP animations.
+ *
+ * Notes:
+ *   JavaScript controls the animations. This file defines only their
+ *   visual states, transitions, and layout behavior.
+ */
+
+/* Design Tokens */
 :root {
   --bg: #f8fafc;
   --surface: #ffffff;
@@ -12,83 +28,140 @@
   --container-max: 1100px;
 }
 
-/* These base rules set the page background, type, and readable content width. */
+/* Navigation */
+/* Navbar offset prevents fixed-header content overlap. */
 html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.7; overflow-x: hidden; }
+body { padding-top: var(--nav-height, 89px); background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.7; overflow-x: hidden; }
+
+/* Muted body text keeps headings visually prominent. */
 p, li, dd { color: var(--muted); }
 a { color: var(--slate); }
+
+/* Shared content width keeps page layouts aligned. */
 .container { max-width: var(--container-max); }
 
-/* Keyboard focus styles make links and controls easy to locate. */
+/* Skip link gives keyboard users direct access to the main content. */
 .skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 1100; padding: .7rem 1rem; border-radius: .5rem; background: var(--slate); color: #fff; }
 .skip-link:focus { top: 1rem; }
+
+/* Strong focus outlines keep keyboard focus visible. */
 a:focus-visible, button:focus-visible { outline: 3px solid #627d8a; outline-offset: 3px; }
 
-/* The navigation uses quiet pill states without changing the original visual style. */
-.navbar { padding-block: 1.2rem; }
-.nav-soft { background: rgba(248, 250, 252, .96); border-bottom: 1px solid rgba(15, 23, 42, .07); }
+/* Fixed navigation keeps page navigation accessible while scrolling. */
+.navbar { position: fixed; inset: 0 0 auto; z-index: 1030; padding-block: 1.2rem; }
+
+/* Translucent navigation separates content without feeling heavy. */
+.nav-soft { background: rgba(248, 250, 252, .96); border-bottom: 1px solid rgba(15, 23, 42, .07); box-shadow: 0 8px 22px rgba(29,43,50,.035); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+
+/* Navigation typography matches the site's minimalist style. */
 .brand-name, .navbar .nav-link { font-family: var(--font-display); text-transform: uppercase; }
 .brand-name { font-weight: 300; letter-spacing: .1em; }
 .navbar .nav-link { color: #46545b; font-size: .9rem; letter-spacing: .08em; }
 .navbar .nav-link.nav-pill { border: 1px solid transparent; border-radius: 999px; padding: .45rem .85rem; transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease; }
+
+/* Hover and active states maintain a clear visual hierarchy. */
 .navbar .nav-link.nav-pill:hover { background: rgba(47, 62, 70, .05); color: var(--slate); }
 .navbar .nav-link.nav-pill.is-active { background: rgba(47, 62, 70, .035); border-color: rgba(47, 62, 70, .18); color: var(--text); }
 
-/* Hero and page titles share the same light, spacious display treatment. */
+/* Hero Section */
+/* Fluid hero sizing prevents abrupt typography shifts across breakpoints. */
 .hero { padding-block: clamp(4.5rem, 10vw, 7rem); }
+
+/* Small uppercase labels introduce content without competing for attention. */
 .hero-kicker, .placeholder-label { display: inline-block; margin: 0 0 1.3rem; color: var(--slate); font-family: var(--font-display); font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; }
 .hero-kicker { padding: .35rem .9rem; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,.55); }
 .hero-title, .section-title, .resume-sheet h2, .resume-sheet h3, .skill-card h3, .project-card h3 { font-family: var(--font-display); }
 .hero-title { margin: 0 0 1.25rem; font-size: clamp(2.6rem, 7vw, 4.25rem); font-weight: 300; letter-spacing: .055em; line-height: 1.1; text-transform: uppercase; }
+
+/* Introductory text maintains a readable line length on wide screens. */
 .hero-subtitle, .page-intro { max-width: 720px; margin: 0 auto; color: #536168; font-size: clamp(1rem, 2vw, 1.12rem); line-height: 1.75; }
 .hero-actions, .profile-links { display: flex; justify-content: center; flex-wrap: wrap; gap: .85rem; margin-top: 2rem; }
 
-/* Primary and secondary actions use the same rounded button shape. */
-.btn-pill { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .72rem 1.25rem; border: 1px solid var(--border); border-radius: 999px; font-family: var(--font-display); font-size: .88rem; font-weight: 500; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; }
-.btn-pill:hover { transform: translateY(-1px); }
+/* Buttons */
+/* Shared button styles keep action hierarchy consistent. */
+.btn-pill { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .72rem 1.25rem; border: 1px solid var(--border); border-radius: 999px; font-family: var(--font-display); font-size: .88rem; font-weight: 500; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; transition: background-color 250ms ease, border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease; }
+.btn-pill:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 9px 20px rgba(29,43,50,.1); }
+
+/* Filled buttons distinguish primary actions while preserving consistency. */
 .btn-pill--primary { background: var(--slate); border-color: var(--slate); color: #fff; }
 .btn-pill--primary:hover { background: #243239; color: #fff; }
 .btn-pill--secondary { background: var(--surface); color: var(--slate); }
 .btn-pill--secondary:hover { background: var(--surface-soft); border-color: rgba(47,62,70,.25); color: var(--slate); }
 
-/* Standard section spacing keeps the homepage open without becoming oversized. */
+/* Content Sections */
+/* Responsive section spacing maintains a consistent visual rhythm. */
 .content-section { padding-block: clamp(4rem, 8vw, 6rem); }
+
+/* Tinted backgrounds separate content without heavy visual weight. */
 .content-section--tinted, .contact-cta { background: var(--surface-soft); border-block: 1px solid rgba(47,62,70,.07); }
 .narrow-copy { max-width: 760px; }
 .section-heading { margin-bottom: 2.5rem; }
 .section-title { margin-bottom: 1.4rem; font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 300; letter-spacing: .06em; text-transform: uppercase; }
 .narrow-copy p { max-width: 70ch; }
 
-/* Skills and projects reuse the same simple card surface. */
+/* Skill Cards */
+/* Reusable card styling keeps related content visually consistent. */
 .skill-card, .project-card { border: 1px solid var(--border); border-radius: 22px; background: var(--surface); }
-.skill-card { padding: 1.7rem; }
+
+/* Centered transform origins support balanced GSAP hover animations. */
+.skill-card { padding: 1.7rem; transform-origin: center; will-change: transform; }
+.skill-card:hover { position: relative; z-index: 2; }
 .skill-card h3, .project-card h3 { color: var(--text); font-size: 1.05rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
 .skill-card ul { margin: 1.1rem 0 0; padding: 0; list-style: none; }
 .skill-card li { padding-block: .25rem; }
+
+/* Three columns balance six skill categories on desktop. */
+.skills-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; align-items: stretch; }
+.skills-action { margin-top: 2.25rem; }
 .contact-cta p { max-width: 650px; margin: 0 auto 1.7rem; }
+
+/* Social Links */
+/* Circular icon buttons keep social links visually consistent. */
 .social-links { display: flex; justify-content: center; gap: .7rem; margin-top: 1.3rem; }
 .icon-btn { display: inline-grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); color: var(--slate); text-decoration: none; transition: background-color 160ms ease, transform 160ms ease; }
 .icon-btn:hover { background: #e9eef0; color: var(--slate); transform: translateY(-2px); }
 
-/* Inner-page headers and project cards stay compact and recruiter-friendly. */
+/* Page Layouts */
+/* Shared spacing keeps page transitions visually consistent. */
 .page-header { padding-block: clamp(3.5rem, 8vw, 5.5rem); }
 .page-header .hero-title { margin-bottom: 1rem; }
 .profile-links { margin-top: 2rem; }
-.project-card { overflow: hidden; transition: transform 180ms ease, box-shadow 180ms ease; }
+.project-list { display: grid; gap: clamp(1.5rem, 4vw, 2.5rem); }
+
+/* Projects Page */
+/* Project cards give equal emphasis to visuals and summaries. */
+.project-card { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr); overflow: hidden; transition: transform 180ms ease, box-shadow 180ms ease; }
 .project-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(29, 43, 50, .06); }
-.project-card__image { aspect-ratio: 16 / 9; width: 100%; object-fit: cover; }
-.project-card__body { display: flex; min-height: 300px; flex-direction: column; padding: clamp(1.6rem, 4vw, 2.4rem); }
+.project-card__media { min-height: 390px; overflow: hidden; background: var(--surface-soft); }
+
+/* Image transforms support subtle GSAP hover animations. */
+.project-card__image { width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+.project-card__media--contain .project-card__image { object-fit: contain; }
+.project-card__body { display: flex; min-height: 390px; flex-direction: column; padding: clamp(1.6rem, 4vw, 2.4rem); }
 .project-card__body p { margin-bottom: 1.4rem; }
 .project-card__body .placeholder-label { margin-bottom: .8rem; }
 .tag-row { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+/* Technology tags are informational rather than interactive. */
 .tag { padding: .34rem .7rem; border: 1px solid var(--border); border-radius: 999px; background: var(--bg); color: #536168; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+
+/* Project Cards */
+/* Auto margin aligns actions across unequal project descriptions. */
 .project-card__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: auto; padding-top: 1.5rem; }
 .project-card__actions .btn-pill { font-size: .76rem; padding: .62rem 1rem; }
 .btn-pill.is-placeholder { border-style: dashed; color: var(--muted); }
+.projects-cta { margin-top: clamp(3rem, 7vw, 5rem); text-align: center; }
+.projects-cta p { margin-bottom: 1rem; }
 
-/* The web resume keeps the PDF's hierarchy while adapting to smaller screens. */
+/* Resume Page */
+/* Responsive layouts preserve the PDF's visual hierarchy. */
 .resume-header { padding-bottom: 3rem; }
+.resume-header__actions { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
+
+/* Constrained width preserves the feel of a printed resume. */
 .resume-sheet { max-width: 920px; margin: 0 auto; padding: clamp(1.5rem, 5vw, 4rem); border: 1px solid var(--border); border-radius: 24px; background: var(--surface); box-shadow: 0 16px 40px rgba(29,43,50,.05); }
+
+/* Identity and contact details */
 .resume-identity { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
 .resume-identity h2 { margin: 0; color: var(--text); font-size: 2rem; font-weight: 400; letter-spacing: .07em; text-transform: uppercase; }
 .resume-role { margin: .3rem 0 0; font-family: var(--font-display); letter-spacing: .14em; text-transform: uppercase; }
@@ -96,11 +169,15 @@ a:focus-visible, button:focus-visible { outline: 3px solid #627d8a; outline-offs
 .resume-identity a, .resume-section a { overflow-wrap: anywhere; text-underline-offset: 3px; }
 .resume-section { padding-top: 2.2rem; }
 .resume-section > h2 { margin-bottom: 1.2rem; color: var(--slate); font-size: 1.15rem; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; }
+
+/* Technical skills use paired columns for faster scanning. */
 .resume-skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2rem; margin: 0; }
 .resume-skills div { padding-bottom: .7rem; border-bottom: 1px solid rgba(47,62,70,.08); }
 .resume-skills dt { font-family: var(--font-display); font-weight: 500; }
 .resume-skills dd { margin: .15rem 0 0; }
 .resume-entry + .resume-entry { margin-top: 2rem; }
+
+/* Entry headings align dates without rigid table markup. */
 .resume-entry__heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; }
 .resume-entry__heading h3 { margin: 0; color: var(--text); font-size: 1.08rem; font-weight: 500; }
 .resume-entry__heading p { margin: .15rem 0 0; }
@@ -108,31 +185,98 @@ a:focus-visible, button:focus-visible { outline: 3px solid #627d8a; outline-offs
 .resume-entry ul { margin-top: .8rem; }
 .inline-list { display: flex; flex-wrap: wrap; gap: .6rem 2rem; padding: 0; list-style: none; }
 
-/* The footer stays understated and consistent on every page. */
+/* Certificates Section */
+/* Anchor spacing keeps certificates visible beneath fixed navigation. */
+.certificates-section { scroll-margin-top: 6rem; }
+.certificates-header { margin-top: clamp(2rem, 5vw, 4rem); background: var(--surface-soft); border-block: 1px solid rgba(47,62,70,.07); }
+.certificates-header .hero-title { margin-bottom: 1rem; }
+.certificate-carousel { padding-top: clamp(2.5rem, 5vw, 4rem); overflow: hidden; }
+
+/* The relative track anchors GSAP-positioned certificate cards. */
+.certificate-grid { position: relative; min-height: 620px; }
+
+/* Overlapping cards preserve stable DOM order for accessibility. */
+.certificate-card { position: absolute; top: 0; left: 50%; display: flex; width: min(68%, 660px); min-width: 0; flex-direction: column; overflow: hidden; border: 1px solid var(--border); border-radius: 22px; background: var(--surface); box-shadow: 0 12px 28px rgba(29,43,50,.045); opacity: .55; will-change: transform, opacity; }
+.certificate-card.is-current { z-index: 2; opacity: 1; box-shadow: 0 22px 48px rgba(29,43,50,.14); }
+
+/* A fixed preview ratio prevents image-loading layout shifts. */
+.certificate-card__preview { display: block; aspect-ratio: 11 / 8.5; overflow: hidden; border-bottom: 1px solid var(--border); background: var(--surface-soft); }
+.certificate-card__preview img { width: 100%; height: 100%; object-fit: cover; }
+.certificate-card__body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+.certificate-card__issuer { margin: 0 0 .6rem; color: var(--slate); font-size: .75rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; }
+.certificate-card h3 { margin: 0 0 .8rem; color: var(--text); font-family: var(--font-display); font-size: 1.18rem; font-weight: 500; letter-spacing: .045em; text-transform: uppercase; }
+.certificate-card__body > p:not(.certificate-card__issuer) { margin-bottom: 1.35rem; }
+.certificate-card .btn-pill { margin-top: auto; padding: .62rem 1rem; font-size: .75rem; }
+
+/* Pagination dots expand to display the active countdown. */
+.certificate-carousel__controls { display: flex; min-height: 22px; align-items: center; justify-content: center; gap: .65rem; margin-top: clamp(2rem, 4vw, 3rem); }
+.certificate-carousel__dot { position: relative; width: 9px; height: 9px; overflow: hidden; padding: 0; border: 0; border-radius: 999px; background: rgba(47,62,70,.22); transition: width 260ms ease, background-color 260ms ease; }
+.certificate-carousel__dot-progress { position: absolute; inset: 0; display: block; border-radius: inherit; background: var(--slate); transform: scaleX(0); transform-origin: left center; }
+.certificate-carousel__dot.is-current { width: 58px; background: rgba(47,62,70,.16); }
+
+/* Motion Controls */
+/* Motion controls enhance navigation without carrying essential information. */
+.scroll-progress { position: fixed; inset: 0 0 auto; z-index: 1100; height: 3px; pointer-events: none; }
+.scroll-progress span { display: block; width: 100%; height: 100%; background: var(--slate); transform: scaleX(0); transform-origin: left center; will-change: transform; }
+
+/* Pointer events activate only after the control becomes visible. */
+.back-to-top { position: fixed; right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem); z-index: 1020; display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid var(--border); border-radius: 50%; background: rgba(255,255,255,.94); box-shadow: 0 12px 28px rgba(29,43,50,.12); color: var(--slate); opacity: 0; pointer-events: none; transform: translateY(14px); }
+.back-to-top.is-visible { pointer-events: auto; }
+
+/* Pointer glow is limited to precise desktop hover input. */
+@media (hover: hover) and (pointer: fine) {
+  .project-card::after { position: absolute; inset: 0; z-index: 0; border-radius: inherit; background: radial-gradient(360px circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(98,125,138,.09), transparent 62%); content: ""; opacity: 0; pointer-events: none; transition: opacity 300ms ease; }
+  .project-card { position: relative; isolation: isolate; }
+  .project-card > * { position: relative; z-index: 1; }
+  .project-card:hover::after { opacity: 1; }
+}
+
+/* Footer */
+/* Shared footer styling closes every page consistently. */
 .site-footer { border-top: 1px solid rgba(15,23,42,.07); font-family: var(--font-display); text-transform: uppercase; }
 .site-footer p { color: #56646b; }
 .footer-icon { margin-left: .9rem; color: #69777e; font-size: 1.15rem; text-decoration: none; }
 .footer-icon:hover { color: var(--slate); }
 
-/* Tablet and phone layouts stack resume details and open the mobile navigation. */
+/* Responsive Design */
 @media (max-width: 767.98px) {
+  /* Mobile navigation opens beneath the fixed header surface. */
   .navbar-collapse { padding-top: 1rem; }
   .navbar .nav-link.nav-pill { display: inline-block; margin-block: .15rem; }
+
+  /* Resume rows stack before content becomes cramped. */
   .resume-identity, .resume-entry__heading { flex-direction: column; gap: .7rem; }
   .resume-identity address { text-align: left; }
   .resume-skills { grid-template-columns: 1fr; }
   .resume-entry__heading > p { margin-top: 0; }
+
+  /* Project media moves above copy on narrow screens. */
+  .project-card { grid-template-columns: 1fr; }
+  .project-card__media { min-height: 0; aspect-ratio: 16 / 9; }
+  .project-card__body { min-height: 0; }
+
+  /* Mobile certificates prioritize the centered card. */
+  .certificate-carousel { max-width: 620px; margin-inline: auto; }
+  .certificate-card { width: 90%; }
+  .skills-grid { grid-template-columns: 1fr; }
 }
 
-/* Very narrow screens use full-width actions where wrapping would feel cramped. */
+/* Two columns protect skill-card readability on tablets. */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Full-width actions preserve reliable tap targets on narrow screens. */
 @media (max-width: 420px) {
   .hero-actions .btn-pill, .profile-links .btn-pill { width: 100%; }
   .brand-name { font-size: .95rem; }
   .resume-sheet { border-radius: 18px; }
 }
 
-/* Visitors who prefer less motion get near-instant transitions. */
+/* Reduced-motion users receive immediate final content states. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; }
+  .certificate-carousel__dot.is-current .certificate-carousel__dot-progress { transform: scaleX(1); }
+  [data-page-content], [data-reveal-section], .section-title { filter: none !important; opacity: 1 !important; transform: none !important; }
 }
